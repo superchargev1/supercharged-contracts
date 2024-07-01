@@ -15,7 +15,9 @@
 1. Config address in .env.dev (.env.prod)
 
    > BOOKER_ADDRESS=
+   >
    > BATCHER_ORDERBOOK_ADDRESS=
+   >
    > OPERATOR_ADDRESS=
 
 2. Run the config scripts:
