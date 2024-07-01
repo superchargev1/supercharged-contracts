@@ -6,8 +6,6 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "../libs/Base.sol";
 import "./Libs.sol";
 
-import "hardhat/console.sol";
-
 contract Events is OwnableUpgradeable, Base {
     bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
     bytes32 public constant BATCHING = keccak256("BATCHING");
