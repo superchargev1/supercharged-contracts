@@ -7,10 +7,6 @@ async function main() {
     ["string"],
     ["OPERATOR_ROLE"]
   );
-  const RESOLVER_ROLE = ethers.solidityPackedKeccak256(
-    ["string"],
-    ["RESOLVER_ROLE"]
-  );
   const BOOKER_ROLE = ethers.solidityPackedKeccak256(
     ["string"],
     ["BOOKER_ROLE"]
@@ -32,13 +28,11 @@ async function main() {
   const booker = process.env.BOOKER_ADDRESS;
   const orderBookBatcher = process.env.BATCHER_ORDERBOOK_ADDRESS;
   const operator = process.env.OPERATOR_ADDRESS;
-  const resolver = process.env.RESOLVER_ADDRESS;
   const blastOperatorPk = process.env.BLAST_OPERATOR_ADDRESS_PK;
 
   assert(booker, "booker address is not defined");
   assert(orderBookBatcher, "orderBookBatcher address is not defined");
   assert(operator, "operator address is not defined");
-  assert(resolver, "resolver address is not defined");
   assert(blastOperatorPk, "blastOperator private key is not defined");
 
   const [deployer] = await ethers.getSigners();
@@ -63,7 +57,6 @@ async function main() {
   );
   //grant the roles
   await (await bookie.grantRole(OPERATOR_ROLE, operator)).wait();
-  await (await bookie.grantRole(RESOLVER_ROLE, resolver)).wait();
   await (await bookie.grantRole(BLAST_POINT_OPERATOR_ROLE, operator)).wait();
   await (
     await bookie.setAddress(BATCHING, contracts?.[networkName]?.["Batching"])
